@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5f6f2" />
+  <title>Little List — To-do</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Little List home"><span class="brand-mark" aria-hidden="true">✓</span> little list for greater things</a>
+      <div class="top-actions"><span class="today" id="today"></span><button class="settings-button" id="settings-open" type="button" aria-haspopup="dialog">⚙ SETTINGS</button></div>
+    </header>
+
+    <section class="todo-card" aria-labelledby="page-title">
+      <div class="intro">
+        <p class="eyebrow">YOUR DAY, YOUR PACE</p>
+        <h1 id="page-title">Make room for<br /><span>what matters.</span></h1>
+        <p class="subtitle">A little progress is still progress. Make it weird.</p>
+      </div>
+
+      <section class="aura-panel" aria-label="Aura points and task summary">
+        <div class="aura-score-block"><span class="mini-label">CURRENT AURA</span><strong><span id="aura-icon">🗿</span> <b id="aura-score">0</b></strong><span id="trend-label">➖ Your aura is holding steady</span></div>
+        <div class="summary-block"><span class="mini-label">YOUR RUNNING SUMMARY</span><strong id="summary-total">0 missions logged</strong><span id="summary-done">0 done / 0 in progress</span></div>
+      </section>
+      <p class="scoring-note">1+ DAY EARLY +10 · SAME DEADLINE DATE +5 · LATE +3 · MISSED −5</p>
+
+      <form class="add-form" id="task-form">
+        <label class="sr-only" for="task-input">Add a task</label>
+        <input id="task-input" type="text" maxlength="140" placeholder="What needs doing?" autocomplete="off" />
+        <label class="reminder-field" for="reminder-input">
+          <span class="reminder-label">REMIND ME</span>
+          <span class="date-time-controls"><input id="reminder-date" type="date" aria-label="Optional reminder date" /><input id="reminder-time" type="time" aria-label="Optional reminder time" /></span>
+          <span class="date-hint">Type directly or use each picker</span>
+        </label>
+        <button class="add-button" type="submit"><span aria-hidden="true">＋</span> Add task</button>
+      </form>
+      <p class="form-hint" id="form-hint" aria-live="polite">Press Enter to add a task</p>
+
+      <div class="list-heading">
+        <h2>Your list <span class="task-count" id="task-count">0</span></h2>
+        <button class="clear-button" id="clear-completed" type="button" hidden>Clear completed</button>
+      </div>
+
+      <ul class="task-list" id="task-list" aria-label="To-do tasks"></ul>
+      <div class="empty-state" id="empty-state">
+        <span class="empty-icon" aria-hidden="true">✳</span>
+        <p class="empty-title">Nothing on your list yet</p>
+        <p class="empty-copy">Add a task above and start your day.</p>
+      </div>
+
+      <footer class="card-footer">
+        <span id="remaining-count">You’ve got this.</span>
+        <span class="save-note"><span class="save-dot"></span> Saved on this device</span>
+      </footer>
+    </section>
+    <p class="page-note">One thing at a time. <span>◎</span></p>
+  </main>
+
+  <dialog class="settings-dialog" id="settings-dialog" aria-labelledby="settings-title">
+    <form method="dialog" class="settings-head"><div><p class="eyebrow">TUNE YOUR LITTLE WORLD</p><h2 id="settings-title">Settings <span>⚙</span></h2></div><button class="settings-close" aria-label="Close settings">×</button></form>
+    <div class="settings-content">
+      <label class="setting-row"><span><strong>Theme mode</strong><small>Switch between dark and light</small></span><select id="mode-setting"><option value="dark">Dark theme</option><option value="light">Light theme</option></select></label>
+      <label class="setting-row"><span><strong>Color theme</strong><small>Pick a preset or customize</small></span><select id="theme-setting"><option value="black-red">Black / Red</option><option value="white-orange">White / Orange</option><option value="pink-green">Pink / Green</option><option value="black-pink">Black / Pink</option><option value="custom">Custom palette</option></select></label>
+      <div class="custom-colors" id="custom-colors" hidden><label>BACKGROUND <input id="background-color" type="color" value="#171612"></label><label>ACCENT <input id="accent-color" type="color" value="#ff3438"></label></div>
+      <label class="setting-row"><span><strong>Font size</strong><small>Make text easier to read</small></span><span class="font-control"><input id="font-size-setting" type="range" min="12" max="32" step="1" value="16" /><output id="font-size-output">16px</output></span></label>
+      <label class="setting-row"><span><strong>Aura symbol</strong><small>Choose your point totem</small></span><select id="aura-symbol" aria-label="Choose aura points symbol"><option value="🗿">🗿 MOAI</option><option value="🔥">🔥 FLAME</option><option value="🗣️">🗣️ FACTS</option></select></label>
+      <div class="settings-actions"><button type="button" class="apply-settings" id="settings-apply">APPLY SETTINGS ↗</button><span id="settings-status" aria-live="polite">Changes are not applied yet</span></div>
+    </div>
+  </dialog>
+</body>
+</html>
